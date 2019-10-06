@@ -8,10 +8,13 @@
   list-style: none;
 }
 
-body {
-  color: var(--mainBlue);
+html {
   height: 95vh;
   max-height: 95vh;
+}
+
+body {
+  color: var(--mainBlue);
 }
 
 input {
