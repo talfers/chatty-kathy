@@ -10,6 +10,8 @@
 
 body {
   color: var(--mainBlue);
+  height: 100vh;
+  max-height: 100vh;
 }
 
 input {
@@ -53,8 +55,6 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  max-height: 100vh;
 }
 
 #user-form {
