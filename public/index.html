@@ -12,9 +12,19 @@
     <section id="page-view">
 
       <header id="chat-title">
-        <img id='logo' src="/imgs/chat.png" alt=""><h2>Chattie Kathy</h2></header>
+        <div id="brand">
+          <img id='logo' src="/imgs/chat.png" alt="">
+          <h2>Chattie Kathy</h2>
+        </div>
+        <div id="username-view">
+          <h3 >Chatting as: <span id="username"></span><h3>
+          <a id="username-edit" href="">edit</a>
+        </div>
+
+      </header>
 
       <form id="user-form">
+        <h4 class='label'>Username</h4>
         <input id="user-input" type="text" placeholder="username"/>
         <button type="submit">Submit</button>
       </form>

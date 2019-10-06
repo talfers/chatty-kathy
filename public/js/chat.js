@@ -8,6 +8,9 @@ const user_input = document.querySelector('#user-input');
 const msg_form = document.querySelector('#msg-form');
 const msg_input = document.querySelector('#msg-input');
 const isTyping = document.querySelector('#typing');
+const username = document.querySelector('#username');
+const username_view = document.querySelector('#username-view');
+const edit_username = document.querySelector('#username-edit');
 
 //Initialize message function
 (function() {
@@ -17,8 +20,18 @@ const isTyping = document.querySelector('#typing');
     e.preventDefault();
     // localStorage.setItem("user", user_input.value);
     socket.emit('change_username', user_input.value);
+    username.innerText = user_input.value;
     user_input.value = '';
+    user_form.style.display = 'none';
+    username_view.style.display = 'flex';
     return true;
+  })
+
+  // Listen for username edit
+  edit_username.addEventListener('click', (e) => {
+    e.preventDefault();
+    username_view.style.display = 'none';
+    user_form.style.display = 'block';
   })
 
   // Listen for submit
@@ -34,7 +47,7 @@ const isTyping = document.querySelector('#typing');
     let li = document.createElement("li");
     let span = document.createElement("span");
     li.className = 'msg';
-    span.className = 'username';
+    span.className = 'msg-data';
     li.innerText = message;
     span.innerText = username;
     li.appendChild(span)

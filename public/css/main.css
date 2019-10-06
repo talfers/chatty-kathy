@@ -15,6 +15,7 @@ input {
 button {
   height: 30px;
   padding: 0 16px;
+  margin: 0 0.33rem;
   border: none;
   background-color: lightgreen;
   border-radius: 6px;
@@ -24,8 +25,13 @@ button {
 
 #chat-title {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 0 24px;
+}
+
+#brand {
+  display: flex;
+  align-items: center;
 }
 
 #logo {
@@ -41,7 +47,18 @@ button {
 }
 
 #user-form {
+  margin: 1rem 0;
   padding: 0 24px;
+}
+
+#username-view {
+  display: none;
+  color: lightblue;
+}
+
+#username-edit {
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
 }
 
 #chat-view {
@@ -54,7 +71,7 @@ button {
   height: 50px;
   display: flex;
   align-items: center;
-  background: lightgrey;
+  background: lightblue;
   padding: 0 24px;
 }
 
@@ -62,13 +79,28 @@ button {
   width: 600px;
 }
 
-.msg {
-  min-height: 60px;
-  padding: 1rem;
-  margin: 16px 0;
-  background: lightgrey;
+.label {
+  margin-bottom: 4px;
 }
 
-.username {
+.msg {
+  min-height: 3rem;
+  width: 400px;
+  padding: 1rem 1rem 1.5rem 1rem;
+  margin: 16px 0;
+  background: lightgrey;
+  border-radius: 6px;
+  position: relative;
+}
+
+.msg-data {
   color: grey;
+  position: absolute;
+  font-size: 0.75rem;
+  bottom: 0.33rem;
+  left: 1rem;
+}
+
+#username {
+  color: black;
 }
