@@ -12,7 +12,7 @@
 body {
   color: var(--mainBlue);
   height: calc(100vh - 172px);
-  max-height: calc(100vh - 1720px);
+  max-height: calc(100vh - 172px);
 }
 
 input {
