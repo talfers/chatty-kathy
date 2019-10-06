@@ -11,6 +11,7 @@ const isTyping = document.querySelector('#typing');
 const username = document.querySelector('#username');
 const username_view = document.querySelector('#username-view');
 const edit_username = document.querySelector('#username-edit');
+const back_btn = document.querySelector('.btn-back');
 
 //Initialize message function
 (function() {
@@ -30,6 +31,7 @@ const edit_username = document.querySelector('#username-edit');
   // Listen for username edit
   edit_username.addEventListener('click', (e) => {
     e.preventDefault();
+    user_input.value = username.innerText;
     username_view.style.display = 'none';
     user_form.style.display = 'block';
   })
@@ -43,11 +45,15 @@ const edit_username = document.querySelector('#username-edit');
   })
 
   socket.on('received', (data) => {
-    const {username, message} = data;
+    const {id, username, message} = data;
     let li = document.createElement("li");
     let span = document.createElement("span");
     li.className = 'msg';
     span.className = 'msg-data';
+    if(socket.id !== id) {
+      li.style.background = 'lightgrey';
+      li.style.marginLeft = '60px';
+    }
     li.innerText = message;
     span.innerText = username;
     li.appendChild(span)
