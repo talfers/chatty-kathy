@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/imgs/chat.png" />
+    <title>ChattieKathy</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+
+    <section id="page-view">
+
+      <header id="chat-title">
+        <img id='logo' src="/imgs/chat.png" alt=""><h2>Chattie Kathy</h2></header>
+
+      <form id="user-form">
+        <input id="user-input" type="text" placeholder="username"/>
+        <button type="submit">Submit</button>
+      </form>
+      <div id='typing'></div>
+
+      <div id="chat-view"></div>
+
+      <form id="msg-form">
+        <input id="msg-input" type="text" placeholder="start typing..."/>
+        <button type="submit">Send     <i class="fas fa-share-square"></i></button>
+      </form>
+
+    </section>
+
+  </body>
+</html>
+
+<script type="text/javascript" src="/js/socket.js"></script>
+<script type="text/javascript" src="/js/chat.js"></script>
