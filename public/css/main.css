@@ -46,7 +46,7 @@ button {
 }
 
 #logo {
-  height: 60px;
+  height: 3.5rem;
   margin-right: 12px;
 }
 
@@ -118,11 +118,25 @@ button {
 
 @media screen and (max-width: 1000px) {
   input {
-    height: 4rem;
+    height: 6rem;
+    font-size: 3rem;
   }
 
   button {
-    height: 4rem;
+    height: 6rem;
+    font-size: 3rem;
+  }
+  #chat-title {
+    font-size: 3rem;
+  }
+  #logo {
+    height: 8rem;
+  }
+  #username-edit {
+    font-size: 2rem;
+  }
+  #user-form {
+    font-size: 3rem;
   }
   #msg-input {
     flex: 1;
