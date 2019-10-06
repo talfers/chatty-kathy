@@ -1,11 +1,19 @@
+:root {
+  --mainBlue: darkblue;
+}
+
 * {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+body {
+  color: var(--mainBlue);
+}
+
 input {
-  height: 30px;
+  height: 2rem;
   border: 1px lightgrey solid;
   border-radius: 6px;
   min-width: 200px;
@@ -13,7 +21,7 @@ input {
 }
 
 button {
-  height: 30px;
+  height: 2rem;
   padding: 0 16px;
   margin: 0 0.33rem;
   border: none;
@@ -21,6 +29,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   outline: none;
+  color: var(--mainBlue);
 }
 
 #chat-title {
@@ -43,7 +52,7 @@ button {
   display: flex;
   flex-direction: column;
   height: 100vh;
-
+  max-height: 100vh;
 }
 
 #user-form {
@@ -68,15 +77,15 @@ button {
 }
 
 #msg-form {
-  height: 50px;
   display: flex;
   align-items: center;
   background: lightblue;
-  padding: 0 24px;
+  padding: 12px 24px;
 }
 
 #msg-input {
   width: 600px;
+  flex: 1;
 }
 
 .label {
@@ -103,4 +112,17 @@ button {
 
 #username {
   color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  input {
+    height: 4rem;
+  }
+
+  button {
+    height: 4rem;
+  }
+  #msg-input {
+    flex: 1;
+  }
 }
