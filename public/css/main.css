@@ -10,8 +10,8 @@
 
 body {
   color: var(--mainBlue);
-  height: 100vh;
-  max-height: 100vh;
+  height: 95vh;
+  max-height: 95vh;
 }
 
 input {
