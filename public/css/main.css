@@ -121,7 +121,6 @@ button {
     height: 6rem;
     font-size: 3rem;
   }
-
   button {
     height: 6rem;
     font-size: 3rem;
@@ -140,5 +139,13 @@ button {
   }
   #msg-input {
     flex: 1;
+  }
+  .msg {
+    min-height: 5.5rem;
+    font-size: 3rem;
+    padding: 1rem 1rem 3rem 1rem;
+  }
+  .msg-data {
+    font-size: 2rem;
   }
 }
