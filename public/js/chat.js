@@ -46,6 +46,7 @@ const numUsers = document.querySelector('#num-users');
     return true;
   })
 
+  // HERE FOR CHANGING RECEIVED MESSAGES MARGIN
   socket.on('received', (data) => {
     const {id, username, message} = data;
     let li = document.createElement("li");
