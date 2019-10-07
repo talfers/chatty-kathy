@@ -17,14 +17,27 @@ app.get('/', (req, res) => {
   res.render('index');
 })
 
+let USERS = [];
+
 io.on('connection', function(socket) {
     socket.username = 'Anonymous';
+    const newUser = {id: socket.id, username: socket.username};
+    USERS.push(newUser)
+    io.emit('update_display_names', {users: [...USERS]})
     //console.log(`User: ${socket.username} connected`);
     socket.on('disconnect', () => {
+      const newUsersArr = USERS.filter(user => user.id !== socket.id);
+      USERS = newUsersArr;
+      io.emit('update_display_names', {users: [...USERS]})
       //console.log('Disconnected')
     })
-    socket.on('change_username', function(username){
+    socket.on('change_username', function({id, username}){
       //console.log(`username now: ${username}`);
+      let user = USERS.find(user => user.id === id)
+      const users = USERS.filter(user => user.id !== id)
+      user.username = username;
+      USERS = [...users, user];
+      io.emit('update_display_names', {users: [...USERS]})
       socket.username = username;
     })
     socket.on('new_message', function(msg) {

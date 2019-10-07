@@ -3,6 +3,7 @@ const socket = io();
 
 // Select DOM elements
 const chat = document.querySelector('#chat-view');
+const user_view = document.querySelector('#user-view');
 const user_form = document.querySelector('#user-form');
 const user_input = document.querySelector('#user-input');
 const msg_form = document.querySelector('#msg-form');
@@ -20,7 +21,7 @@ const back_btn = document.querySelector('.btn-back');
   user_form.addEventListener('submit', (e) => {
     e.preventDefault();
     // localStorage.setItem("user", user_input.value);
-    socket.emit('change_username', user_input.value);
+    socket.emit('change_username', {id: socket.id, username: user_input.value});
     username.innerText = user_input.value;
     user_input.value = '';
     user_form.style.display = 'none';
@@ -58,6 +59,17 @@ const back_btn = document.querySelector('.btn-back');
     span.innerText = username;
     li.appendChild(span)
     chat.appendChild(li)
+  })
+
+  socket.on('update_display_names', (users) => {
+    user_view.innerHTML = '';
+    console.log(users.users);
+    users.users.forEach(user => {
+      const userCard = document.createElement('div');
+      userCard.className = 'user-card';
+      userCard.innerHTML = `<i class="fas fa-circle"></i> ${user.username}`;
+      user_view.appendChild(userCard);
+    })
   })
 
 })();

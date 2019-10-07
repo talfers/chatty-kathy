@@ -11,8 +11,8 @@
 
 body {
   color: var(--mainBlue);
-  height: calc(100vh - 196px);
-  max-height: calc(100vh - 196px);
+  height: 100vh;
+  max-height: 100vh;
 }
 
 input {
@@ -73,10 +73,35 @@ button {
   margin-left: 0.5rem;
 }
 
+#chat-container {
+  flex: 1;
+  display: flex;
+  overflow-y: scroll;
+}
+
 #chat-view {
   flex: 1;
   overflow-y: scroll;
   padding: 0 24px;
+}
+
+#user-view {
+  border: 1px lightgrey solid;
+  min-width: 250px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  border: 1px lightgrey solid;
+  padding: 0 1rem;
+}
+
+.fa-circle {
+  font-size: 0.70rem;
+  margin-right: 6px;
+  color: lightgreen;
 }
 
 #msg-form {
@@ -118,6 +143,10 @@ button {
 }
 
 @media screen and (max-width: 1000px) {
+  body {
+    height: calc(100vh - 196px);
+    max-height: calc(100vh - 196px);
+  }
   input {
     height: 6rem;
     font-size: 3rem;
