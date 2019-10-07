@@ -63,7 +63,6 @@ const back_btn = document.querySelector('.btn-back');
 
   socket.on('update_display_names', (users) => {
     user_view.innerHTML = '';
-    console.log(users.users);
     users.users.forEach(user => {
       const userCard = document.createElement('div');
       userCard.className = 'user-card';
