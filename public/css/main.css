@@ -85,6 +85,15 @@ button {
   padding: 0 24px;
 }
 
+#user-title {
+  margin-left: 12px;
+}
+
+#user-title span {
+  margin-left: 6px;
+  font-size: 1rem;
+}
+
 #user-view {
   border: 1px lightgrey solid;
   min-width: 250px;

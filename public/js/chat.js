@@ -13,6 +13,7 @@ const username = document.querySelector('#username');
 const username_view = document.querySelector('#username-view');
 const edit_username = document.querySelector('#username-edit');
 const back_btn = document.querySelector('.btn-back');
+const numUsers = document.querySelector('#num-users');
 
 //Initialize message function
 (function() {
@@ -61,9 +62,11 @@ const back_btn = document.querySelector('.btn-back');
     chat.appendChild(li)
   })
 
-  socket.on('update_display_names', (users) => {
+  socket.on('update_display_names', (data) => {
     user_view.innerHTML = '';
-    users.users.forEach(user => {
+    numUsers.innerText = '';
+    numUsers.innerText = `(${data.users.length})`;
+    data.users.forEach(user => {
       const userCard = document.createElement('div');
       userCard.className = 'user-card';
       userCard.innerHTML = `<i class="fas fa-circle"></i> ${user.username}`;
