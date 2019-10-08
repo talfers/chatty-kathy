@@ -48,7 +48,8 @@ io.on('connection', function(socket) {
     });
     socket.on('new_message', function(msg) {
       //console.log(`message: ${msg}, username: ${socket.username}`);
-      io.emit('received', {message: msg, username: socket.username, id: socket.id});
+      const time_created = Date.now()
+      io.emit('received', {message: msg, username: socket.username, id: socket.id, created: time_created});
     });
     // socket.on('typing', function() {
       // socket.broadcast.emit('show_typing', {username: socket.username});

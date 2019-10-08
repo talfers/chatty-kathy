@@ -59,7 +59,8 @@ const numUsers = document.querySelector('#num-users');
   });
 
   socket.on('received', (data) => {
-    const {id, username, message} = data;
+    const {id, username, message, created} = data;
+    const time = Date(created).substring(0, 21);
     let li = document.createElement("li");
     let span = document.createElement("span");
     li.className = 'msg';
@@ -68,7 +69,7 @@ const numUsers = document.querySelector('#num-users');
       li.className = 'msg msg-received'
     }
     li.innerText = message;
-    span.innerText = username;
+    span.innerHTML = `<span>${username}</span><span class='time'>${time}</span>`;
     li.appendChild(span)
     chat.appendChild(li)
   });
