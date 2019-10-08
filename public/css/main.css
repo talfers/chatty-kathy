@@ -165,7 +165,7 @@ button {
 }
 
 @media screen and (max-width: 1000px) {
-  body {
+  #page-view {
     height: calc(100vh - 196px);
     max-height: calc(100vh - 196px);
   }
