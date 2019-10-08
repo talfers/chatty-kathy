@@ -20,35 +20,39 @@ app.get('/', (req, res) => {
 let USERS = [];
 
 io.on('connection', function(socket) {
-    socket.username = 'Anonymous';
-    const newUser = {id: socket.id, username: socket.username};
-    USERS.push(newUser)
-    io.emit('update_display_names', {users: [...USERS]})
+    let CURRENT_USER;
+    socket.emit('get_item');
+    socket.on('parse_storage', (item) => {
+      CURRENT_USER = item?item:'Anonymous';
+      socket.username = CURRENT_USER;
+      const newUser = {id: socket.id, username: socket.username};
+      USERS.push(newUser);
+      io.emit('update_display_names', {users: [...USERS]});
+    });
     //console.log(`User: ${socket.username} connected`);
     socket.on('disconnect', () => {
       const newUsersArr = USERS.filter(user => user.id !== socket.id);
       USERS = newUsersArr;
-      io.emit('update_display_names', {users: [...USERS]})
+      io.emit('update_display_names', {users: [...USERS]});
       //console.log('Disconnected')
-    })
+    });
     socket.on('change_username', function({id, username}){
+      socket.emit('set_storage', username);
       //console.log(`username now: ${username}`);
-      let user = USERS.find(user => user.id === id)
-      const users = USERS.filter(user => user.id !== id)
+      let user = USERS.find(user => user.id === id);
+      const users = USERS.filter(user => user.id !== id);
       user.username = username;
       USERS = [...users, user];
-      io.emit('update_display_names', {users: [...USERS]})
+      io.emit('update_display_names', {users: [...USERS]});
       socket.username = username;
-    })
+    });
     socket.on('new_message', function(msg) {
       //console.log(`message: ${msg}, username: ${socket.username}`);
-      io.emit('received', {message: msg, username: socket.username, id: socket.id})
-    })
-    socket.on('typing', function() {
-      socket.broadcast.emit('show_typing', {username: socket.username});
-    })
-
-
+      io.emit('received', {message: msg, username: socket.username, id: socket.id});
+    });
+    // socket.on('typing', function() {
+      // socket.broadcast.emit('show_typing', {username: socket.username});
+    // })
 });
 
 

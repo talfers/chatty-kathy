@@ -36,6 +36,7 @@ const numUsers = document.querySelector('#num-users');
     user_input.value = username.innerText;
     username_view.style.display = 'none';
     user_form.style.display = 'block';
+    return true;
   })
 
   // Listen for submit
@@ -44,6 +45,17 @@ const numUsers = document.querySelector('#num-users');
     socket.emit('new_message', msg_input.value);
     msg_input.value = '';
     return true;
+  })
+
+  socket.on('get_item', async () => {
+    const storage = await localStorage.getItem('username');
+    if(storage) {
+      username.innerText = storage;
+      user_input.value = '';
+      user_form.style.display = 'none';
+      username_view.style.display = 'flex';
+    }
+    socket.emit('parse_storage', storage);
   })
 
   // HERE FOR CHANGING RECEIVED MESSAGES MARGIN
@@ -61,6 +73,10 @@ const numUsers = document.querySelector('#num-users');
     span.innerText = username;
     li.appendChild(span)
     chat.appendChild(li)
+  })
+
+  socket.on('set_storage', (username) => {
+    localStorage.setItem('username', username);
   })
 
   socket.on('update_display_names', (data) => {
