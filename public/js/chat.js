@@ -56,9 +56,8 @@ const numUsers = document.querySelector('#num-users');
       username_view.style.display = 'flex';
     }
     socket.emit('parse_storage', storage);
-  })
+  });
 
-  // HERE FOR CHANGING RECEIVED MESSAGES MARGIN
   socket.on('received', (data) => {
     const {id, username, message} = data;
     let li = document.createElement("li");
@@ -66,18 +65,17 @@ const numUsers = document.querySelector('#num-users');
     li.className = 'msg';
     span.className = 'msg-data';
     if(socket.id !== id) {
-      li.style.background = 'lightgrey';
-      li.style.marginLeft = '60px';
+      li.className = 'msg msg-received'
     }
     li.innerText = message;
     span.innerText = username;
     li.appendChild(span)
     chat.appendChild(li)
-  })
+  });
 
   socket.on('set_storage', (username) => {
     localStorage.setItem('username', username);
-  })
+  });
 
   socket.on('update_display_names', (data) => {
     user_view.innerHTML = '';
@@ -88,8 +86,8 @@ const numUsers = document.querySelector('#num-users');
       userCard.className = 'user-card';
       userCard.innerHTML = `<i class="fas fa-circle"></i> ${user.username}`;
       user_view.appendChild(userCard);
-    })
-  })
+    });
+  });
 
 })();
 

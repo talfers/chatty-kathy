@@ -84,6 +84,8 @@ button {
   flex: 1;
   overflow-y: scroll;
   padding: 0 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 #user-title {
@@ -134,10 +136,15 @@ button {
   min-height: 3rem;
   width: 400px;
   padding: 1rem 1rem 1.5rem 1rem;
-  margin: 16px 0;
+  margin: 12px 0;
   background: lightgreen;
   border-radius: 6px;
   position: relative;
+}
+
+.msg-received {
+  background: lightgrey;
+  margin-left: 80px;
 }
 
 .msg-data {
@@ -184,6 +191,10 @@ button {
     min-height: 5.5rem;
     font-size: 3rem;
     padding: 1rem 1rem 3rem 1rem;
+  }
+  .msg-received {
+    align-self: flex-end;
+    margin-left: 0;
   }
   .msg-data {
     font-size: 2rem;
