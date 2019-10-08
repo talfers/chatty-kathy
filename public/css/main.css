@@ -205,6 +205,9 @@ button {
   .msg-data {
     font-size: 2rem;
   }
+  .time {
+    display: none;
+  }
   #users-container {
     font-size: 2rem;
   }
