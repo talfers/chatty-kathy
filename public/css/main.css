@@ -191,6 +191,7 @@ button {
     min-height: 5.5rem;
     font-size: 3rem;
     padding: 1rem 1rem 3rem 1rem;
+    width: 500px;
   }
   .msg-received {
     align-self: flex-end;
