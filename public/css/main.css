@@ -52,7 +52,6 @@ button {
 
 #page-view {
   height: 100vh;
-
   display: flex;
   flex-direction: column;
 }
@@ -76,7 +75,6 @@ button {
   flex: 1;
   display: flex;
   overflow-y: hidden;
-
 }
 
 #chat-view {
